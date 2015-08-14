@@ -27,6 +27,10 @@ public class ChessClock extends AppCompatActivity {
         final EditText mEditText = (EditText) findViewById(R.id.editText);
         final TextView mTextField2 = (TextView) findViewById(R.id.textView2);
         final EditText mEditText2 = (EditText) findViewById(R.id.editText2);
+        final EditText mPlayer1setDelay = (EditText) findViewById(R.id.player1setDelay);
+        final TextView mPlayer1delay = (TextView) findViewById(R.id.player1delay);
+        final EditText mPlayer2setDelay = (EditText) findViewById(R.id.player2setDelay);
+        final TextView mPlayer2delay = (TextView) findViewById(R.id.player2delay);
 
 
 
@@ -48,25 +52,41 @@ public class ChessClock extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final long num = Long.parseLong(mEditText.getText().toString());
-                new CountDownTimer((num * 60000), 1000) {
+                final long nume = Long.parseLong(mPlayer1setDelay.getText().toString());
+                new CountDownTimer((nume * 1000), 1000) {
 
                     public void onTick(long millisUntilFinished) {
-                        mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+                        mPlayer1delay.setText("Delay seconds remaining: " + millisUntilFinished / 1000);
                     }
 
                     public void onFinish() {
-                        mTextField.setText("done!");
+                        mPlayer1delay.setText("Delay time up!");
+                        final long num = Long.parseLong(mEditText.getText().toString());
+                        new CountDownTimer((num * 60000), 1000) {
+
+                            public void onTick(long millisUntilFinished) {
+                                mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+                            }
+
+                            public void onFinish() {
+                                mTextField.setText("done!");
+                            }
+                        }.start();
+
+
+                        Context context = getApplicationContext();
+                        CharSequence text = "the number selected is " + num;
+                        int duration = Toast.LENGTH_LONG;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
                     }
                 }.start();
 
 
-                Context context = getApplicationContext();
-                CharSequence text = "the number selected is " + num;
-                int duration = Toast.LENGTH_LONG;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+
+
             }
         });
 
@@ -75,21 +95,33 @@ public class ChessClock extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final long num = Long.parseLong(mEditText2.getText().toString());
-                new CountDownTimer((num * 60000), 1000) {
+                final long numer = Long.parseLong(mPlayer2setDelay.getText().toString());
+                new CountDownTimer((numer * 1000), 1000) {
 
                     public void onTick(long millisUntilFinished) {
-                        mTextField2.setText("seconds remaining: " + millisUntilFinished / 1000);
+                        mPlayer2delay.setText("Delay seconds remaining: " + millisUntilFinished / 1000);
                     }
 
                     public void onFinish() {
-                        mTextField2.setText("done!");
+                        mPlayer2delay.setText("Delay time up!");
+                        final long num = Long.parseLong(mEditText2.getText().toString());
+                        new CountDownTimer((num * 60000), 1000) {
+
+                            public void onTick(long millisUntilFinished) {
+                                mTextField2.setText("seconds remaining: " + millisUntilFinished / 1000);
+                            }
+
+                            public void onFinish() {
+                                mTextField2.setText("done!");
+                            }
+                        }.start();
                     }
                 }.start();
 
 
+
                 Context context = getApplicationContext();
-                CharSequence text = "the number selected is " + num;
+                CharSequence text = "the number selected is " + numer;
                 int duration = Toast.LENGTH_LONG;
 
                 Toast toast = Toast.makeText(context, text, duration);
