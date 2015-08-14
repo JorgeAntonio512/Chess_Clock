@@ -11,24 +11,20 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Press"
+        android:text="Start"
         android:id="@+id/btn_start"
         android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/player1setDelay"
-        android:layout_alignStart="@+id/player1setDelay"
-        android:layout_marginLeft="59dp"
-        android:layout_marginStart="59dp"/>
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Press"
+        android:text="Start"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="98dp"
-        android:layout_marginEnd="98dp"/>
+        android:layout_toLeftOf="@+id/player2finish"
+        android:layout_toStartOf="@+id/player2finish"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,9 +87,9 @@
         android:layout_height="wrap_content"
         android:text="Delay"
         android:id="@+id/player1delay"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/player1setDelay"
-        android:layout_alignStart="@+id/player1setDelay"/>
+        android:layout_above="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -101,17 +97,17 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/player2setDelay"
-        android:layout_alignBottom="@+id/player1setDelay"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2"
-        android:hint="delay/move (seconds)"/>
+        android:hint="delay/move (seconds)"
+        android:layout_alignTop="@+id/player1setDelay"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignStart="@+id/editText2"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delay"
         android:id="@+id/player2delay"
-        android:layout_alignTop="@+id/player1delay"
+        android:layout_below="@+id/player2setDelay"
         android:layout_alignRight="@+id/player2setDelay"
         android:layout_alignEnd="@+id/player2setDelay"/>
 
@@ -119,10 +115,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/switch1"
-        android:layout_alignBottom="@+id/btn_start"
-        android:layout_toLeftOf="@+id/editText2"
-        android:layout_toStartOf="@+id/editText2"
         android:textOn="White"
-        android:textOff="White"/>
+        android:textOff="White"
+        android:layout_alignBottom="@+id/player1finish"
+        android:layout_toRightOf="@+id/editText"
+        android:layout_toEndOf="@+id/editText"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finish"
+        android:id="@+id/player1finish"
+        android:layout_alignTop="@+id/btn_start"
+        android:layout_toRightOf="@+id/btn_start"
+        android:layout_toEndOf="@+id/btn_start"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finish"
+        android:id="@+id/player2finish"
+        android:layout_below="@+id/textView2"
+        android:layout_alignRight="@+id/player2delay"
+        android:layout_alignEnd="@+id/player2delay"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instructions: use the toggle switch to designate which player is white. When both players are ready, white will hit &quot;start&quot;. He has the designated time to make his move. When he is finished, he hits &quot;finish&quot;, and immediately therafter, black hits &quot;start&quot; and makes his move, hitting &quot;finish&quot; after. Rinse and repeat. A tone will sound when either player&apos;s time expires."
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/button2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

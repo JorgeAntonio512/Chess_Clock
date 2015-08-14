@@ -1,6 +1,9 @@
 package com.georgepazdral.chessclock;
 
 import android.content.Context;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,8 +23,10 @@ public class ChessClock extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chess_clock);
 
-        Button button = (Button) findViewById(R.id.btn_start);
-        Button button2 = (Button) findViewById(R.id.button2);
+        final Button button = (Button) findViewById(R.id.btn_start);
+        final Button button2 = (Button) findViewById(R.id.button2);
+        final Button player1finish = (Button) findViewById(R.id.player1finish);
+        final Button player2finish = (Button) findViewById(R.id.player2finish);
 
         final TextView mTextField = (TextView) findViewById(R.id.textView);
         final EditText mEditText = (EditText) findViewById(R.id.editText);
@@ -57,6 +62,11 @@ public class ChessClock extends AppCompatActivity {
 
                     public void onTick(long millisUntilFinished) {
                         mPlayer1delay.setText("Delay seconds remaining: " + millisUntilFinished / 1000);
+                        player1finish.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+                                cancel();
+                            }
+                        });
                     }
 
                     public void onFinish() {
@@ -66,10 +76,18 @@ public class ChessClock extends AppCompatActivity {
 
                             public void onTick(long millisUntilFinished) {
                                 mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+                                player1finish.setOnClickListener(new View.OnClickListener() {
+                                    public void onClick(View v) {
+                                        cancel();
+                                    }
+                                });
                             }
 
                             public void onFinish() {
                                 mTextField.setText("done!");
+                                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                                Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+                                r.play();
                             }
                         }.start();
 
@@ -100,6 +118,11 @@ public class ChessClock extends AppCompatActivity {
 
                     public void onTick(long millisUntilFinished) {
                         mPlayer2delay.setText("Delay seconds remaining: " + millisUntilFinished / 1000);
+                        player2finish.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+                                cancel();
+                            }
+                        });
                     }
 
                     public void onFinish() {
@@ -109,10 +132,18 @@ public class ChessClock extends AppCompatActivity {
 
                             public void onTick(long millisUntilFinished) {
                                 mTextField2.setText("seconds remaining: " + millisUntilFinished / 1000);
+                                player2finish.setOnClickListener(new View.OnClickListener() {
+                                    public void onClick(View v) {
+                                        cancel();
+                                    }
+                                });
                             }
 
                             public void onFinish() {
                                 mTextField2.setText("done!");
+                                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                                Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+                                r.play();
                             }
                         }.start();
                     }
