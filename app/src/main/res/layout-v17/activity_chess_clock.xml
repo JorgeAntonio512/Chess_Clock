@@ -14,8 +14,8 @@
         android:text="Start"
         android:id="@+id/btn_start"
         android:layout_below="@+id/textView"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"/>
+        android:layout_toLeftOf="@+id/player1finish"
+        android:layout_toStartOf="@+id/player1finish"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -126,9 +126,9 @@
         android:layout_height="wrap_content"
         android:text="Finish"
         android:id="@+id/player1finish"
-        android:layout_alignTop="@+id/btn_start"
-        android:layout_toRightOf="@+id/btn_start"
-        android:layout_toEndOf="@+id/btn_start"/>
+        android:layout_below="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -137,7 +137,7 @@
         android:id="@+id/player2finish"
         android:layout_below="@+id/textView2"
         android:layout_alignRight="@+id/player2delay"
-        android:layout_alignEnd="@+id/player2delay"/>
+        />
 
     <TextView
         android:layout_width="wrap_content"

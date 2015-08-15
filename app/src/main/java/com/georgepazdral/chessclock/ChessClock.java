@@ -52,111 +52,112 @@ public class ChessClock extends AppCompatActivity {
 
 
 
+       // long nomo = Long.parseLong(mPlayer1setDelay.getText().toString());
 
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final long nume = Long.parseLong(mPlayer1setDelay.getText().toString());
-                new CountDownTimer((nume * 1000), 1000) {
-
-                    public void onTick(long millisUntilFinished) {
-                        mPlayer1delay.setText("Delay seconds remaining: " + millisUntilFinished / 1000);
-                        player1finish.setOnClickListener(new View.OnClickListener() {
-                            public void onClick(View v) {
-                                cancel();
-                            }
-                        });
-                    }
-
-                    public void onFinish() {
-                        mPlayer1delay.setText("Delay time up!");
-                        final long num = Long.parseLong(mEditText.getText().toString());
-                        new CountDownTimer((num * 60000), 1000) {
-
-                            public void onTick(long millisUntilFinished) {
-                                mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
-                                player1finish.setOnClickListener(new View.OnClickListener() {
-                                    public void onClick(View v) {
-                                        cancel();
-                                    }
-                                });
-                            }
-
-                            public void onFinish() {
-                                mTextField.setText("done!");
-                                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-                                Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-                                r.play();
-                            }
-                        }.start();
-
-
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mPlayer1setDelay.getText().toString().equals("") || mEditText.getText().toString().equals("")) {
                         Context context = getApplicationContext();
-                        CharSequence text = "the number selected is " + num;
+                        CharSequence text = "Please enter a number for both delay and total time!";
                         int duration = Toast.LENGTH_LONG;
 
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
-                    }
-                }.start();
+                    } else {
+                    final long nume = Long.parseLong(mPlayer1setDelay.getText().toString());
+                    new CountDownTimer((nume * 1000), 1000) {
+
+                        public void onTick(long millisUntilFinished) {
+                            mPlayer1delay.setText("Delay seconds remaining: " + millisUntilFinished / 1000);
+                            player1finish.setOnClickListener(new View.OnClickListener() {
+                                public void onClick(View v) {
+                                    cancel();
+                                }
+                            });
+                        }
+
+                        public void onFinish() {
+                            mPlayer1delay.setText("Delay time up!");
+                            final long num = Long.parseLong(mEditText.getText().toString());
+                            new CountDownTimer((num * 60000), 1000) {
+
+                                public void onTick(long millisUntilFinished) {
+                                    mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+                                    player1finish.setOnClickListener(new View.OnClickListener() {
+                                        public void onClick(View v) {
+                                            cancel();
+                                        }
+                                    });
+                                }
+
+                                public void onFinish() {
+                                    mTextField.setText("done!");
+                                    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                                    Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+                                    r.play();
+                                }
+                            }.start();
 
 
+                        }
+                    }.start();
 
 
-
-            }
-        });
+                }}
+            });
 
 
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final long numer = Long.parseLong(mPlayer2setDelay.getText().toString());
-                new CountDownTimer((numer * 1000), 1000) {
+                if (mPlayer2setDelay.getText().toString().equals("") || mEditText2.getText().toString().equals("")) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please enter a number for both delay and total time!";
+                    int duration = Toast.LENGTH_LONG;
 
-                    public void onTick(long millisUntilFinished) {
-                        mPlayer2delay.setText("Delay seconds remaining: " + millisUntilFinished / 1000);
-                        player2finish.setOnClickListener(new View.OnClickListener() {
-                            public void onClick(View v) {
-                                cancel();
-                            }
-                        });
-                    }
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                } else {
+                    final long numer = Long.parseLong(mPlayer2setDelay.getText().toString());
+                    new CountDownTimer((numer * 1000), 1000) {
 
-                    public void onFinish() {
-                        mPlayer2delay.setText("Delay time up!");
-                        final long num = Long.parseLong(mEditText2.getText().toString());
-                        new CountDownTimer((num * 60000), 1000) {
+                        public void onTick(long millisUntilFinished) {
+                            mPlayer2delay.setText("Delay seconds remaining: " + millisUntilFinished / 1000);
+                            player2finish.setOnClickListener(new View.OnClickListener() {
+                                public void onClick(View v) {
+                                    cancel();
+                                }
+                            });
+                        }
 
-                            public void onTick(long millisUntilFinished) {
-                                mTextField2.setText("seconds remaining: " + millisUntilFinished / 1000);
-                                player2finish.setOnClickListener(new View.OnClickListener() {
-                                    public void onClick(View v) {
-                                        cancel();
-                                    }
-                                });
-                            }
+                        public void onFinish() {
+                            mPlayer2delay.setText("Delay time up!");
+                            final long num = Long.parseLong(mEditText2.getText().toString());
+                            new CountDownTimer((num * 60000), 1000) {
 
-                            public void onFinish() {
-                                mTextField2.setText("done!");
-                                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-                                Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-                                r.play();
-                            }
-                        }.start();
-                    }
-                }.start();
+                                public void onTick(long millisUntilFinished) {
+                                    mTextField2.setText("seconds remaining: " + millisUntilFinished / 1000);
+                                    player2finish.setOnClickListener(new View.OnClickListener() {
+                                        public void onClick(View v) {
+                                            cancel();
+                                        }
+                                    });
+                                }
+
+                                public void onFinish() {
+                                    mTextField2.setText("done!");
+                                    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                                    Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+                                    r.play();
+                                }
+                            }.start();
+                        }
+                    }.start();
 
 
-
-                Context context = getApplicationContext();
-                CharSequence text = "the number selected is " + numer;
-                int duration = Toast.LENGTH_LONG;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                }
             }
         });
 
